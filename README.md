@@ -1,24 +1,73 @@
-# README
+# Debit Cards API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple API for managing debit cards. It allows you to create debit cards and perform reload and checkout operations on them.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+### Navigate to the project directory and install the dependencies:
 
-* System dependencies
+```bash
+cd debit-cards-api
+bundle install
+```
 
-* Configuration
+### Create database structure:
 
-* Database creation
+```bash
+rails db:drop db:create db:migrate db:seed
+```
 
-* Database initialization
+### Start the server:
 
-* How to run the test suite
+```bash
+bin/dev
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## API Endpoints
 
-* Deployment instructions
+### Create a Debit Card
 
-* ...
+URL: /api/debit_cards
+Method: POST
+Request Body:
+
+```json
+{
+  "debit_card": {
+    "name": "credit card",
+    "balance": 100
+  }
+}
+```
+
+Response: Returns the created debit card object
+
+### Reload a Debit Card
+
+:id = credit_card_number
+URL: /api/debit_cards/:id/reload
+Method: PATCH
+Request Body:
+
+```json
+{
+  "amount": 100
+}
+```
+
+Response: Returns the updated debit card object.
+
+### Response: Returns the updated debit card object.
+
+:id = credit_card_number
+URL: /api/debit_cards/:id/checkout
+Method: PATCH
+Request Body:
+
+```json
+{
+  "amount": 50
+}
+```
+
+Response: Returns the updated debit card object.
