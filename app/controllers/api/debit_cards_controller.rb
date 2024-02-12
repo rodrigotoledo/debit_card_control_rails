@@ -36,7 +36,7 @@ class Api::DebitCardsController < ActionController::API
   private
 
   def set_debit_card
-    @debit_card = DebitCard.find(params[:id])
+    @debit_card = DebitCard.find_by(number: params[:id])
   end
 
   def debit_card_params

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
       patch 'checkout', on: :member
     end
   end
+
+  root "debit_cards#index"
 end
