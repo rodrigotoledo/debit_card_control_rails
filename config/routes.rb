@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    resources :debit_cards, only: [:create] do
+      post 'reload', on: :member
+      post 'checkout', on: :member
+    end
+  end
 end
